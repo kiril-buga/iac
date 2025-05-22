@@ -1,5 +1,5 @@
 @description('Name of the AKS cluster. Defaults to a unique hash prefixed with "petfaindr"')
-param clusterName string = 'petfaindr'
+param clusterName string = 'petfaindr-aks'
 
 
 @description('Azure Storage Account name')
@@ -14,7 +14,6 @@ param serviceBusAuthorizationRuleName string = 'petfaindr-sb-t1/Dapr'
 resource aksCluster 'Microsoft.ContainerService/managedClusters@2024-08-01' existing = {
   name: clusterName
 }
-
 
 resource cosmosAccount 'Microsoft.DocumentDB/databaseAccounts@2022-08-15' existing = {
   name: cosmosAccountName

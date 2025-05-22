@@ -6,7 +6,7 @@ param kubeConfig string
 param containerRegistry string
 
 @description('Tag of container to use')
-param containerTag string = '1'
+param containerTag string = '1.0'
 
 extension kubernetes with {
   kubeConfig: kubeConfig
@@ -42,7 +42,7 @@ resource backendDeployment 'apps/Deployment@v1' = {
         containers: [
           {
             name: 'backend'
-            image: '${containerRegistry}/petb:${containerTag}'
+            image: '${containerRegistry}/backend:${containerTag}'
             imagePullPolicy: 'Always'
             env: [
               {
