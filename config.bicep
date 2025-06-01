@@ -3,13 +3,13 @@ param clusterName string = 'petfaindr-aks'
 
 
 @description('Azure Storage Account name')
-param storageAccountName string = 'petfaindrstg'
+param storageAccountName string = 'petfaindrstg1'
 
 @description('Azure CosmosDB account name')
-param cosmosAccountName string = 'petfaindr-cdb'
+param cosmosAccountName string = 'petfaindr-cdb2'
 
 @description('Azure Service Bus authorization rule name')
-param serviceBusAuthorizationRuleName string = 'petfaindr-sb-t1/Dapr'
+param serviceBusAuthorizationRuleName string = 'petfaindr-sb-t2/Dapr'
 
 resource aksCluster 'Microsoft.ContainerService/managedClusters@2024-08-01' existing = {
   name: clusterName
@@ -36,7 +36,7 @@ module secrets 'secrets.bicep' = {
     storageAccountName: storageAccount.name
     storageAccountKey: storageAccount.listKeys().keys[0].value
     serviceBusConnectionString: serviceBusAuthorizationRule.listKeys().primaryConnectionString
-    cvapiTrainingEndpoint: 'https://petfaindrcv.cognitiveservices.azure.com/'
+    cvapiTrainingEndpoint: 'https://petfaindrcv1.cognitiveservices.azure.com/'
     cvapiTrainingKey: '60m9VHbiy2zVMKqBMY3fa4U3oPJmuvqy7ySpCfzoNeSCdtmEQGC7JQQJ99BDACfhMk5XJ3w3AAAJACOGndj4'
     cvapiPredictionEndpoint: 'https://petfaindrcv-prediction.cognitiveservices.azure.com/'
     cvapiPredictionKey: '30IoyslKptFdVWBYtUQJDHYRZPnX8daI7jS657neZZh2uwlDNJRiJQQJ99BDACfhMk5XJ3w3AAAIACOGoVt5'

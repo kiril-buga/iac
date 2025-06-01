@@ -1,5 +1,5 @@
 @description('Existing ACR name')
-param registryName string = 'petfaindracr'    // << fixed – real name, no uniqueString()
+param registryName string = 'petfaindracr2'    // << updated to new registry name for Subscription JH Azure for Students
 
 @description('Existing AKS cluster name')
 param clusterName string = 'petfaindr-aks'    // << fixed – real name, no uniqueString()
